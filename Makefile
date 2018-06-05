@@ -10,8 +10,8 @@ mruby/bin/mrbc: mruby
 
 generated_bytecode.c: mruby/bin/mrbc app.rb
 	mruby/bin/mrbc -Bgenerated_mrb_bytecode -o generated_bytecode.c app.rb
-app: app.c generated_bytecode.c
-	gcc -std=c99 -Imruby/include app.c -o app mruby/build/host/lib/libmruby.a -lm
+app: app_boilerplate.c generated_bytecode.c
+	gcc -std=c99 -Imruby/include app_boilerplate.c -o app mruby/build/host/lib/libmruby.a -lm
 	strip app
 clean:
 	cd mruby && make clean
